@@ -121,7 +121,9 @@ header{
 }
 
 .main-content{
+    margin: 0 auto;
     margin-top: 2rem;
+    max-width: 400px;
     .thumbnail-wrapper{
         .desktop-thumbnail{
             display: none;
@@ -213,6 +215,7 @@ header{
         }
 
         .cart-add-wrapper{
+            font-weight: 700;
             .quantity-wrapper{
                 width: 100%;
                 display: flex;
@@ -228,7 +231,8 @@ header{
                 }
             }
             button{
-                margin: 1.5rem 0;
+                margin-top: 1rem;
+                margin-bottom: 5rem;
                 width: 100%;
                 padding: 1rem;
                 display: flex;
@@ -239,17 +243,17 @@ header{
                 border-radius: 10px;
                 color: $white;
                 font-weight: 700;
+                font-size: 1rem;
                 img{
-                    width: 15px;
-                    height: 15px;
-                    margin-right: 10px;
+                    width: 18px;
+                    height: 18px;
+                    margin-right: 1rem;
                 }
                 &:hover{
                     cursor: pointer;
                     opacity: 0.6;
                 }
             }
-            
         }
     }
 
