@@ -251,7 +251,7 @@ header .account-menu .account:hover {
     padding-bottom: 2rem;
   }
   header .main-menu {
-    flex-basis: 60%;
+    flex-basis: 570px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -279,7 +279,7 @@ header .account-menu .account:hover {
     margin-bottom: -4px;
   }
   header .account-menu {
-    flex-basis: 10%;
+    flex-basis: 88px;
   }
   header .account-menu .account {
     width: 40px;
