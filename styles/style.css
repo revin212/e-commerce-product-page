@@ -31,6 +31,17 @@ ul {
   list-style-type: none;
 }
 
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 2;
+}
+
 .mobile-menu {
   display: none;
   background-color: hsl(25deg, 100%, 94%);
@@ -95,8 +106,9 @@ header .account-menu {
   align-items: center;
 }
 header .account-menu .cart {
-  width: 22px;
-  height: 22px;
+  width: 35px;
+  height: 35px;
+  padding: 0.5rem;
 }
 header .account-menu .cart:hover {
   cursor: pointer;
@@ -116,49 +128,142 @@ header .account-menu .account:hover {
   margin-top: 2rem;
   max-width: 400px;
 }
-.main-content .thumbnail-wrapper .desktop-thumbnail {
+.main-content .lightbox-thumbnail-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
   display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
 }
-.main-content .thumbnail-wrapper .mobile-thumbnail {
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail {
+  width: 275px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .selected-image {
+  display: flex;
   overflow: hidden;
 }
-.main-content .thumbnail-wrapper .mobile-thumbnail #close-btn-lightbox-mobile {
-  display: none;
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .selected-image .main-img {
+  width: 100%;
+  border-radius: 20px;
 }
-.main-content .thumbnail-wrapper .mobile-thumbnail .button {
-  position: relative;
-  padding: 1rem;
-  left: -3px;
-  top: -5px;
-}
-.main-content .thumbnail-wrapper .mobile-thumbnail .button:hover {
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .selected-image .main-img:hover {
   cursor: pointer;
-  filter: invert(63%) sepia(56%) saturate(4587%) hue-rotate(348deg) brightness(106%) contrast(101%);
 }
-.main-content .thumbnail-wrapper .mobile-thumbnail .btn-wrapper {
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list {
+  display: flex;
+  max-width: 80%;
+  margin-top: 2rem;
+  margin-bottom: 0;
+  justify-content: space-between;
+}
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list .thumbnail {
+  width: 20%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list .thumbnail .thumbnail-img {
+  width: 100%;
+  height: 100%;
+}
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list .thumbnail:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list .selected {
+  border: solid 3px hsl(26deg, 100%, 55%);
+}
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list .selected .thumbnail-img {
+  opacity: 0.5;
+}
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list .selected:hover {
+  opacity: 1;
+}
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail #close-btn-lightbox {
+  display: block;
+  padding: 1rem;
+  position: absolute;
+  top: -3rem;
+  right: -1rem;
+}
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail #close-btn-lightbox:hover {
+  cursor: pointer;
+  filter: invert(23%) sepia(56%) saturate(4587%) hue-rotate(348deg) brightness(106%) contrast(101%);
+}
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .btn-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 30%;
   background-color: hsl(25deg, 100%, 94%);
   border-radius: 50%;
   position: absolute;
   width: 2.5rem;
   height: 2.5rem;
 }
-.main-content .thumbnail-wrapper .mobile-thumbnail .btn-wrapper.prev {
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .btn-wrapper .button {
+  padding: 1rem;
+}
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .btn-wrapper .button:hover {
+  cursor: pointer;
+  filter: invert(63%) sepia(56%) saturate(4587%) hue-rotate(348deg) brightness(106%) contrast(101%);
+}
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .btn-wrapper.prev {
+  left: -1.3rem;
+}
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .btn-wrapper.next {
+  right: -1.3rem;
+}
+.main-content .thumbnail-wrapper .main-thumbnail {
+  position: relative;
+  overflow: hidden;
+}
+.main-content .thumbnail-wrapper .main-thumbnail .button:hover {
+  cursor: pointer;
+  filter: invert(63%) sepia(56%) saturate(4587%) hue-rotate(348deg) brightness(106%) contrast(101%);
+}
+.main-content .thumbnail-wrapper .main-thumbnail .btn-wrapper {
+  background-color: hsl(25deg, 100%, 94%);
+  border-radius: 50%;
+  position: absolute;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-content .thumbnail-wrapper .main-thumbnail .btn-wrapper .button:hover {
+  cursor: pointer;
+  filter: invert(63%) sepia(56%) saturate(4587%) hue-rotate(348deg) brightness(106%) contrast(101%);
+}
+.main-content .thumbnail-wrapper .main-thumbnail .btn-wrapper.prev {
   left: 1rem;
   top: 45%;
 }
-.main-content .thumbnail-wrapper .mobile-thumbnail .btn-wrapper.next {
+.main-content .thumbnail-wrapper .main-thumbnail .btn-wrapper.next {
   right: 1rem;
   top: 45%;
 }
-.main-content .thumbnail-wrapper .mobile-thumbnail .main-img {
+.main-content .thumbnail-wrapper .main-thumbnail .main-img {
   width: 100%;
 }
-.main-content .thumbnail-wrapper .mobile-thumbnail .main-img:hover {
+.main-content .thumbnail-wrapper .main-thumbnail .main-img:hover {
   cursor: pointer;
 }
-.main-content .thumbnail-wrapper .mobile-thumbnail .mobile-main-img {
+.main-content .thumbnail-wrapper .main-thumbnail .selected-image {
   display: flex;
+}
+.main-content .thumbnail-wrapper .image-list {
+  display: none;
 }
 .main-content .desc-wrapper {
   margin: 1.5rem;
@@ -291,55 +396,58 @@ header .account-menu .account:hover {
     align-items: center;
     justify-content: space-between;
   }
-  .main-content .mobile-thumbnail {
-    display: none;
+  .main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail {
+    width: 400px;
+  }
+  .main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .btn-wrapper {
+    top: 35%;
   }
   .main-content .thumbnail-wrapper {
-    overflow: hidden;
     flex-basis: 45%;
   }
-  .main-content .thumbnail-wrapper .lightbox {
+  .main-content .thumbnail-wrapper .main-thumbnail {
+    display: block;
+    overflow: hidden;
+  }
+  .main-content .thumbnail-wrapper .main-thumbnail .btn-wrapper {
     display: none;
   }
-  .main-content .thumbnail-wrapper .desktop-thumbnail {
-    display: block;
-  }
-  .main-content .thumbnail-wrapper .desktop-thumbnail .selected-image {
+  .main-content .thumbnail-wrapper .main-thumbnail .selected-image {
     display: flex;
     width: 100%;
   }
-  .main-content .thumbnail-wrapper .desktop-thumbnail .selected-image img {
+  .main-content .thumbnail-wrapper .main-thumbnail .selected-image img {
     width: 100%;
     border-radius: 20px;
   }
-  .main-content .thumbnail-wrapper .desktop-thumbnail .selected-image img:hover {
+  .main-content .thumbnail-wrapper .main-thumbnail .selected-image img:hover {
     cursor: pointer;
   }
-  .main-content .thumbnail-wrapper .desktop-thumbnail .image-list {
+  .main-content .thumbnail-wrapper .main-thumbnail .image-list {
     display: flex;
     justify-content: space-between;
     margin: 2rem 0;
   }
-  .main-content .thumbnail-wrapper .desktop-thumbnail .image-list .thumbnail {
+  .main-content .thumbnail-wrapper .main-thumbnail .image-list .thumbnail {
     width: 20%;
     border-radius: 10px;
     overflow: hidden;
   }
-  .main-content .thumbnail-wrapper .desktop-thumbnail .image-list .thumbnail .thumbnail-img {
+  .main-content .thumbnail-wrapper .main-thumbnail .image-list .thumbnail .thumbnail-img {
     width: 100%;
     height: 100%;
   }
-  .main-content .thumbnail-wrapper .desktop-thumbnail .image-list .thumbnail:hover {
+  .main-content .thumbnail-wrapper .main-thumbnail .image-list .thumbnail:hover {
     cursor: pointer;
     opacity: 0.6;
   }
-  .main-content .thumbnail-wrapper .desktop-thumbnail .image-list .selected {
+  .main-content .thumbnail-wrapper .main-thumbnail .image-list .selected {
     border: solid 3px hsl(26deg, 100%, 55%);
   }
-  .main-content .thumbnail-wrapper .desktop-thumbnail .image-list .selected .thumbnail-img {
+  .main-content .thumbnail-wrapper .main-thumbnail .image-list .selected .thumbnail-img {
     opacity: 0.2;
   }
-  .main-content .thumbnail-wrapper .desktop-thumbnail .image-list .selected:hover {
+  .main-content .thumbnail-wrapper .main-thumbnail .image-list .selected:hover {
     opacity: 1;
   }
   .main-content .desc-wrapper {

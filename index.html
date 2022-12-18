@@ -47,28 +47,48 @@
 
   <main class="main-content">
     <div class="thumbnail-wrapper">
-      <div class="mobile-thumbnail">
-        <img id="close-btn-lightbox-mobile" src="./images/icon-close.svg" alt="">
-        
-        <div class="btn-wrapper prev" id="previous-btn">
-          <img class="button" src="./images/icon-previous.svg" alt="">
+      <div class="main-thumbnail">
+        <!-- <img id="close-btn-lightbox" src="./images/icon-close2.svg" alt=""> -->
+        <div class="btn-wrapper prev">
+          <img id="previous-btn" class="button" src="./images/icon-previous.svg" alt="">
         </div>
-        <div class="btn-wrapper next" id="next-btn">
-          <img class="button" src="./images/icon-next.svg" alt="">
+        <div class="btn-wrapper next">
+          <img id="next-btn" class="button" src="./images/icon-next.svg" alt="">
         </div>
         
-        <div class="mobile-main-img">
-          <img class="main-img" src="./images/image-product-1.jpg" alt="">
+        <div class="selected-image">
+          <img class="main-img selected" src="./images/image-product-1.jpg" alt="">
           <img class="main-img" src="./images/image-product-2.jpg" alt="">
           <img class="main-img" src="./images/image-product-3.jpg" alt="">
           <img class="main-img" src="./images/image-product-4.jpg" alt="">
         </div>
-      </div>
 
-      <div class="desktop-thumbnail">
-        <img id="close-btn-lightbox" class="lightbox" src="./images/icon-close.svg" alt="">
-        <img id="previous-btn-lightbox" class="lightbox" src="./images/icon-previous.svg" alt="">
-        <img id="next-btn-lightbox" class="lightbox" src="./images/icon-next.svg" alt="">
+        <div class="image-list">
+          <div class="thumbnail selected">
+            <img class="thumbnail-img" src="./images/image-product-1-thumbnail.jpg" alt="">
+          </div>
+          <div class="thumbnail">
+            <img class="thumbnail-img" src="./images/image-product-2-thumbnail.jpg" alt="">
+          </div>
+          <div class="thumbnail">
+            <img class="thumbnail-img" src="./images/image-product-3-thumbnail.jpg" alt="">
+          </div>
+          <div class="thumbnail">
+            <img class="thumbnail-img" src="./images/image-product-4-thumbnail.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lightbox-thumbnail-wrapper">
+      <div class="lightbox-thumbnail">
+        <img id="close-btn-lightbox" src="./images/icon-close2.svg" alt="">
+          <div class="btn-wrapper prev">
+            <img id="previous-btn-lightbox" class="button" src="./images/icon-previous.svg" alt="">
+          </div>
+          <div class="btn-wrapper next">
+            <img id="next-btn-lightbox" class="button" src="./images/icon-next.svg" alt="">
+          </div>
         <div class="selected-image">
           <img class="main-img selected" src="./images/image-product-1.jpg" alt="">
           <img class="main-img" src="./images/image-product-2.jpg" alt="">
@@ -91,7 +111,7 @@
         </div>
       </div>
     </div>
-
+    
     <div class="desc-wrapper">
       <h4 class="sneaker-company">Sneaker Company</h4>
       <h1 class="product-name">Fall Limited Edition Sneakers</h1>

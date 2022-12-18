@@ -35,6 +35,16 @@ h4{
 ul{
     list-style-type: none;
 }
+.overlay{
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.75);
+    z-index: 2;
+}
 
 .mobile-menu{
     display: none;
@@ -101,8 +111,9 @@ header{
         justify-content: space-between;
         align-items: center;
         .cart{
-            width: 22px;
-            height: 22px;
+            width: 35px;
+            height: 35px;
+            padding: 0.5rem;
             &:hover{
                 cursor: pointer;
                 filter: invert(63%) sepia(56%) saturate(4587%) hue-rotate(348deg) brightness(106%) contrast(101%);
@@ -124,22 +135,117 @@ header{
     margin: 0 auto;
     margin-top: 2rem;
     max-width: 400px;
-    .thumbnail-wrapper{
-        .desktop-thumbnail{
-            display: none;
-        }
-        .mobile-thumbnail{
+
+    .lightbox-thumbnail-wrapper{
+        position: fixed;
+        top: 0;
+        left:0;
+        width: 100%;
+        height: 100vh;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 3;
+
+        .lightbox-thumbnail{
+            width: 275px;
             position: relative;
-            //height: 300px;
-            overflow: hidden;
-            #close-btn-lightbox-mobile{
-                display: none;
+            // width: 40%;
+            // max-width: 400px;
+            // min-width: 275px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+            .selected-image{
+                display: flex;
+                overflow: hidden;
+                .main-img{
+                    width: 100%;
+                    border-radius: 20px;
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
             }
-            .button{
-                position: relative;
+            .image-list{
+                display: flex;
+                max-width: 80%;
+                margin-top: 2rem;
+                margin-bottom: 0;
+                justify-content: space-between;
+                .thumbnail{
+                    width: 20%;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    .thumbnail-img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                    &:hover{
+                        cursor: pointer;
+                        opacity: 0.5;
+                    }
+                }
+                .selected{
+                    border: solid 3px $orange;
+                    .thumbnail-img{
+                        opacity: 0.5;
+                    }
+                    &:hover{
+                        opacity: 1;
+                    }
+                }
+            }
+            #close-btn-lightbox{
+                display: block;
                 padding: 1rem;
-                left: -3px;
-                top: -5px;
+                position: absolute;
+                top: -3rem;
+                right: -1rem;
+                &:hover{
+                    cursor: pointer;
+                    filter: invert(23%) sepia(56%) saturate(4587%) hue-rotate(348deg) brightness(106%) contrast(101%);
+                }
+            }
+            .btn-wrapper{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                top: 30%;
+                background-color: $pale-orange;
+                border-radius: 50%;
+                position: absolute;
+                width: 2.5rem;
+                height: 2.5rem;
+                .button{
+                    padding: 1rem;
+                    &:hover{
+                        cursor: pointer;
+                        filter: invert(63%) sepia(56%) saturate(4587%) hue-rotate(348deg) brightness(106%) contrast(101%);
+                    }
+                }
+            }
+            .btn-wrapper.prev{
+                left: -1.3rem;
+            }
+            .btn-wrapper.next{
+                right: -1.3rem;
+            }
+        }
+    }
+
+
+    .thumbnail-wrapper{
+        // .desktop-thumbnail{
+        //     display: none;
+        // }
+        .main-thumbnail{
+            position: relative;
+            overflow: hidden;
+            .button{
                 &:hover{
                     cursor: pointer;
                     filter: invert(63%) sepia(56%) saturate(4587%) hue-rotate(348deg) brightness(106%) contrast(101%);
@@ -151,6 +257,15 @@ header{
                 position: absolute;
                 width: 2.5rem;
                 height: 2.5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .button{
+                    &:hover{
+                        cursor: pointer;
+                        filter: invert(63%) sepia(56%) saturate(4587%) hue-rotate(348deg) brightness(106%) contrast(101%);
+                    }
+                }
             }
             .btn-wrapper.prev{
                 left:1rem;
@@ -167,10 +282,14 @@ header{
                     cursor: pointer;
                 }
             }
-            .mobile-main-img{
+            .selected-image{
                 display:flex;
                 //height: 300px;
             }
+        }
+
+        .image-list{
+            display: none;
         }
     }
 
@@ -308,17 +427,24 @@ header{
         display: flex;
         align-items: center;
         justify-content: space-between;
-        .mobile-thumbnail{
-            display: none;
+        
+        .lightbox-thumbnail-wrapper{
+            .lightbox-thumbnail{
+                width: 400px;
+                .btn-wrapper{
+                    top:35%
+                }
+            }
         }
         .thumbnail-wrapper{
-            overflow: hidden;
             flex-basis: 45%;
-            .lightbox{
-                display: none;
-            }
-            .desktop-thumbnail{
+            
+            .main-thumbnail{
                 display: block;
+                overflow: hidden;
+                .btn-wrapper{
+                    display: none;
+                }
                 .selected-image{
                     display: flex;
                     width: 100%;
