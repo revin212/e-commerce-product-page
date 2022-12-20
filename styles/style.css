@@ -58,7 +58,7 @@ ul {
   background-color: hsl(25deg, 100%, 94%);
   position: fixed;
   top: 0;
-  left: -300px;
+  left: -60%;
   z-index: 3;
   height: 100vh;
   width: 60%;
@@ -102,7 +102,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   background-color: hsl(25deg, 100%, 94%);
   display: flex;
@@ -293,13 +293,17 @@ header .cart-content-wrapper .cart-content .product-checkout .checkout-btn:hover
 }
 .main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .selected-image .main-img {
   width: 100%;
-  opacity: 0;
-  -webkit-animation: change-image 400ms ease forwards;
-          animation: change-image 400ms ease forwards;
+  opacity: 0.2;
+  display: none;
+  -webkit-animation: change-image 800ms ease forwards;
+          animation: change-image 800ms ease forwards;
   transition: 500ms ease;
 }
 .main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .selected-image .main-img:hover {
   cursor: pointer;
+}
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .selected-image .main-img.active {
+  display: block;
 }
 .main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list2 {
   display: flex;
@@ -386,6 +390,7 @@ header .cart-content-wrapper .cart-content .product-checkout .checkout-btn:hover
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 .main-content .thumbnail-wrapper .main-thumbnail .btn-wrapper .button:hover {
   cursor: pointer;
@@ -401,10 +406,17 @@ header .cart-content-wrapper .cart-content .product-checkout .checkout-btn:hover
 }
 .main-content .thumbnail-wrapper .main-thumbnail .main-img {
   width: 100%;
+  opacity: 0.3;
   transition: 500ms ease;
+  -webkit-animation: change-image 1s ease forwards;
+          animation: change-image 1s ease forwards;
+  display: none;
 }
 .main-content .thumbnail-wrapper .main-thumbnail .main-img:hover {
   cursor: pointer;
+}
+.main-content .thumbnail-wrapper .main-thumbnail .main-img.active {
+  display: block;
 }
 .main-content .thumbnail-wrapper .main-thumbnail .selected-image-main {
   display: flex;

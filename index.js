@@ -6,12 +6,14 @@ const nextBtns = document.getElementsByClassName('next-btn');
 const minusBtn = document.getElementById('minus-btn');
 const plusBtn = document.getElementById('plus-btn');
 const addBtn = document.getElementById('add-to-cart');
-const mainImgFirst = document.getElementsByClassName('first-img');
 const imgList1 = document.querySelector('.image-list1');
 const thumbnails1 = imgList1.getElementsByClassName('thumbnail');
 const imgList2 = document.querySelector('.image-list2');
 const thumbnails2 = imgList2.getElementsByClassName('thumbnail');
-const selectedImg = document.querySelector('.selected-image-main');
+const selectedImg1 = document.querySelector('.selected-image-main');
+const mainImgs1 = selectedImg1.getElementsByClassName('main-img');
+const selectedImg2 = document.querySelector('.selected-image');
+const mainImgs2 = selectedImg2.getElementsByClassName('main-img');
 const closeBtnLightbox = document.getElementById('close-btn-lightbox');
 const overlay = document.querySelector('.overlay');
 const closeBtnMenu = document.getElementById('close-btn-menu')
@@ -22,25 +24,14 @@ let itemAmount = 0;
 
 
 function showImg(i) {
-    if(i === 1){
-        for(let j=0; j<mainImgFirst.length; j++){
-            mainImgFirst[j].style.marginLeft = "0";
-        };
-    } else if(i === 2){
-        for(let j=0; j<mainImgFirst.length; j++){
-            mainImgFirst[j].style.marginLeft = "-100%";
-        };
+    for(let j=0; j<mainImgs1.length; j++){
+        if(mainImgs1[j].classList.contains('active')){
+            mainImgs1[j].classList.remove('active');
+            mainImgs2[j].classList.remove('active');
+        }
     }
-    else if(i === 3){
-        for(let j=0; j<mainImgFirst.length; j++){
-            mainImgFirst[j].style.marginLeft = "-200%";
-        };
-    }
-    else if(i === 4){
-        for(let j=0; j<mainImgFirst.length; j++){
-            mainImgFirst[j].style.marginLeft = "-300%";
-        };
-    }
+    mainImgs1[i-1].classList.add('active');
+    mainImgs2[i-1].classList.add('active');
 
     for(let j=0; j<thumbnails1.length; j++){
         if(thumbnails1[j].classList.contains('selected')){
@@ -70,7 +61,7 @@ for(let i=0; i<nextBtns.length; i++){
     });
 }
 
-selectedImg.addEventListener('click', ()=> {
+selectedImg1.addEventListener('click', ()=> {
     overlay.style.display = "block";
     document.querySelector('.lightbox-thumbnail-wrapper').style.display = "flex";
 })
