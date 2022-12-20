@@ -19,17 +19,18 @@ html{
     font-family: 'Kumbh Sans', sans-serif;
 }
 body{
-    background-color: $pale-orange;
+    background-color: $white;
 }
 p,ul{
     font-size: 1rem;
     color: $dark-grayish-blue;
     font-weight: 400;
 }
-h1,h3{
+h1,h2{
     color: $very-dark-blue;
 }
-h4{
+h3,h4{
+    font-size: 1.1rem;
     color: $orange;
 }
 ul{
@@ -55,7 +56,7 @@ ul{
 }
 .mobile-menu{
     display: none;
-    background-color: $pale-orange;
+    background-color: $white;
     position: fixed;
     top:0;
     left:-60%;
@@ -99,7 +100,7 @@ header{
     left:0;
     z-index: 2;
     width: 100%;
-    background-color: $pale-orange;
+    background-color: $white;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -173,7 +174,7 @@ header{
         left: 0;
         right: 0;
         opacity: 0;
-        background-color: $pale-orange;
+        background-color: $white;
         margin-inline: 0.5rem;
         padding: 1.3rem;
         border-radius: 10px;
@@ -345,7 +346,7 @@ header{
                 justify-content: center;
                 align-items: center;
                 top: 30%;
-                background-color: $pale-orange;
+                background-color: $white;
                 border-radius: 50%;
                 position: absolute;
                 width: 2.5rem;
@@ -381,7 +382,7 @@ header{
                 }
             }
             .btn-wrapper{
-                background-color: $pale-orange;
+                background-color: $white;
                 border-radius: 50%;
                 position: absolute;
                 width: 2.5rem;
@@ -440,7 +441,7 @@ header{
         .product-name{
             margin: 1rem 0;
             font-weight: 700;
-            font-size: 1.8rem;
+            font-size: 2rem;
             line-height: 2rem;
         }
         .product-desc{
@@ -663,22 +664,29 @@ header{
         }
         .desc-wrapper{
             flex-basis: 45%;
+            .product-name{
+                font-size: 3rem;
+                line-height: 3rem;
+            }
             .price-wrapper{
                 display: block;
                 .sale-price{
                     justify-content: flex-start;
-                    .discount{
-                        margin-left: 2rem;
-                    }
                 }
                 .default-price{
                     margin: 0.5rem 0;
+                }
+                .discount{
+                    margin-left: 1rem;
                 }
             }
             .cart-add-wrapper{
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                .quantity-wrapper{
+                    flex-basis: 70%;
+                }
                 button{
                     margin: 0;
                 }
