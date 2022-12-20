@@ -42,27 +42,44 @@ ul {
   z-index: 2;
 }
 
+@-webkit-keyframes mobile-menu-animation {
+  to {
+    left: 0;
+  }
+}
+
+@keyframes mobile-menu-animation {
+  to {
+    left: 0;
+  }
+}
 .mobile-menu {
   display: none;
   background-color: hsl(25deg, 100%, 94%);
   position: fixed;
   top: 0;
-  left: 0;
+  left: -300px;
   z-index: 3;
   height: 100vh;
   width: 60%;
   padding: 1.5rem;
+  -webkit-animation: mobile-menu-animation 400ms ease forwards;
+          animation: mobile-menu-animation 400ms ease forwards;
 }
 .mobile-menu img {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 .mobile-menu img:hover {
   cursor: pointer;
   filter: invert(63%) sepia(56%) saturate(4587%) hue-rotate(348deg) brightness(106%) contrast(101%);
 }
+.mobile-menu ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
 .mobile-menu li {
   font-weight: 700;
-  margin: 1.5rem 0;
   color: hsl(220deg, 13%, 13%);
 }
 .mobile-menu li:hover {
@@ -70,6 +87,17 @@ ul {
   color: hsl(26deg, 100%, 55%);
 }
 
+@-webkit-keyframes showCart {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes showCart {
+  to {
+    opacity: 1;
+  }
+}
 header {
   position: fixed;
   top: 0;
@@ -100,7 +128,7 @@ header .main-menu .logo:hover {
   cursor: pointer;
 }
 header .account-menu {
-  flex-basis: 70px;
+  flex-basis: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -123,12 +151,31 @@ header .account-menu .account:hover {
   border: 2px solid hsl(26deg, 100%, 55%);
   border-radius: 50%;
 }
+header .account-menu .quantity-alert {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 15px;
+  background-color: hsl(26deg, 100%, 55%);
+  color: hsl(25deg, 100%, 94%);
+  width: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  border-radius: 10px;
+}
+header .cart-content-wrapper.active {
+  display: block;
+  -webkit-animation: showCart 400ms ease forwards;
+          animation: showCart 400ms ease forwards;
+}
 header .cart-content-wrapper {
   display: none;
   position: absolute;
   top: 4.8rem;
   left: 0;
   right: 0;
+  opacity: 0;
   background-color: hsl(25deg, 100%, 94%);
   margin-inline: 0.5rem;
   padding: 1.3rem;
@@ -203,6 +250,17 @@ header .cart-content-wrapper .cart-content .product-checkout .checkout-btn:hover
   opacity: 0.6;
 }
 
+@-webkit-keyframes change-image {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes change-image {
+  to {
+    opacity: 1;
+  }
+}
 .main-content {
   margin: 0 auto;
   margin-top: 2rem;
@@ -230,45 +288,46 @@ header .cart-content-wrapper .cart-content .product-checkout .checkout-btn:hover
 }
 .main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .selected-image {
   display: flex;
+  border-radius: 20px;
   overflow: hidden;
 }
 .main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .selected-image .main-img {
   width: 100%;
-  border-radius: 20px;
+  opacity: 0;
+  -webkit-animation: change-image 400ms ease forwards;
+          animation: change-image 400ms ease forwards;
+  transition: 500ms ease;
 }
 .main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .selected-image .main-img:hover {
   cursor: pointer;
 }
-.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .selected-image .main-img.first {
-  margin-left: 0;
-}
-.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list {
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list2 {
   display: flex;
   max-width: 80%;
   margin-top: 2rem;
   margin-bottom: 0;
   justify-content: space-between;
 }
-.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list .thumbnail {
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list2 .thumbnail {
   width: 20%;
   border-radius: 10px;
   overflow: hidden;
 }
-.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list .thumbnail .thumbnail-img {
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list2 .thumbnail .thumbnail-img {
   width: 100%;
   height: 100%;
 }
-.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list .thumbnail:hover {
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list2 .thumbnail:hover {
   cursor: pointer;
   opacity: 0.5;
 }
-.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list .selected {
-  border: solid 3px hsl(26deg, 100%, 55%);
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list2 .selected {
+  outline: solid 3px hsl(26deg, 100%, 55%);
 }
-.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list .selected .thumbnail-img {
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list2 .selected .thumbnail-img {
   opacity: 0.5;
 }
-.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list .selected:hover {
+.main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .image-list2 .selected:hover {
   opacity: 1;
 }
 .main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail #close-btn-lightbox {
@@ -292,6 +351,7 @@ header .cart-content-wrapper .cart-content .product-checkout .checkout-btn:hover
   position: absolute;
   width: 2.5rem;
   height: 2.5rem;
+  z-index: 3;
 }
 .main-content .lightbox-thumbnail-wrapper .lightbox-thumbnail .btn-wrapper .button {
   padding: 1rem;
@@ -341,17 +401,15 @@ header .cart-content-wrapper .cart-content .product-checkout .checkout-btn:hover
 }
 .main-content .thumbnail-wrapper .main-thumbnail .main-img {
   width: 100%;
+  transition: 500ms ease;
 }
 .main-content .thumbnail-wrapper .main-thumbnail .main-img:hover {
   cursor: pointer;
 }
-.main-content .thumbnail-wrapper .main-thumbnail .main-img.first {
-  margin-left: 0;
-}
-.main-content .thumbnail-wrapper .main-thumbnail .selected-image {
+.main-content .thumbnail-wrapper .main-thumbnail .selected-image-main {
   display: flex;
 }
-.main-content .thumbnail-wrapper .image-list {
+.main-content .thumbnail-wrapper .image-list1 {
   display: none;
 }
 .main-content .desc-wrapper {
@@ -443,10 +501,16 @@ header .cart-content-wrapper .cart-content .product-checkout .checkout-btn:hover
     width: 350px;
     z-index: 1;
   }
+  header .account-menu {
+    flex-basis: 90px;
+  }
 }
 @media only screen and (min-width: 600px) {
   header {
     padding: 2rem 1rem;
+  }
+  header .cart-content-wrapper {
+    top: 6.8rem;
   }
   .main-content {
     max-width: 600px;
@@ -463,7 +527,7 @@ header .cart-content-wrapper .cart-content .product-checkout .checkout-btn:hover
     padding: 1rem;
     max-width: 1100px;
     margin: 0 auto;
-    position: static;
+    position: relative;
   }
   header .main-menu {
     flex-basis: 570px;
@@ -494,7 +558,7 @@ header .cart-content-wrapper .cart-content .product-checkout .checkout-btn:hover
     margin-bottom: -4px;
   }
   header .account-menu {
-    flex-basis: 88px;
+    flex-basis: 118px;
   }
   header .account-menu .account {
     width: 40px;
@@ -521,47 +585,47 @@ header .cart-content-wrapper .cart-content .product-checkout .checkout-btn:hover
   }
   .main-content .thumbnail-wrapper .main-thumbnail {
     display: block;
-    overflow: hidden;
   }
   .main-content .thumbnail-wrapper .main-thumbnail .btn-wrapper {
     display: none;
   }
-  .main-content .thumbnail-wrapper .main-thumbnail .selected-image {
+  .main-content .thumbnail-wrapper .main-thumbnail .selected-image-main {
     display: flex;
     width: 100%;
-  }
-  .main-content .thumbnail-wrapper .main-thumbnail .selected-image img {
-    width: 100%;
     border-radius: 20px;
+    overflow: hidden;
   }
-  .main-content .thumbnail-wrapper .main-thumbnail .selected-image img:hover {
+  .main-content .thumbnail-wrapper .main-thumbnail .selected-image-main img {
+    width: 100%;
+  }
+  .main-content .thumbnail-wrapper .main-thumbnail .selected-image-main img:hover {
     cursor: pointer;
   }
-  .main-content .thumbnail-wrapper .main-thumbnail .image-list {
+  .main-content .thumbnail-wrapper .main-thumbnail .image-list1 {
     display: flex;
     justify-content: space-between;
     margin: 2rem 0;
   }
-  .main-content .thumbnail-wrapper .main-thumbnail .image-list .thumbnail {
+  .main-content .thumbnail-wrapper .main-thumbnail .image-list1 .thumbnail {
     width: 20%;
     border-radius: 10px;
     overflow: hidden;
   }
-  .main-content .thumbnail-wrapper .main-thumbnail .image-list .thumbnail .thumbnail-img {
+  .main-content .thumbnail-wrapper .main-thumbnail .image-list1 .thumbnail .thumbnail-img {
     width: 100%;
     height: 100%;
   }
-  .main-content .thumbnail-wrapper .main-thumbnail .image-list .thumbnail:hover {
+  .main-content .thumbnail-wrapper .main-thumbnail .image-list1 .thumbnail:hover {
     cursor: pointer;
     opacity: 0.6;
   }
-  .main-content .thumbnail-wrapper .main-thumbnail .image-list .selected {
+  .main-content .thumbnail-wrapper .main-thumbnail .image-list1 .selected {
     border: solid 3px hsl(26deg, 100%, 55%);
   }
-  .main-content .thumbnail-wrapper .main-thumbnail .image-list .selected .thumbnail-img {
+  .main-content .thumbnail-wrapper .main-thumbnail .image-list1 .selected .thumbnail-img {
     opacity: 0.2;
   }
-  .main-content .thumbnail-wrapper .main-thumbnail .image-list .selected:hover {
+  .main-content .thumbnail-wrapper .main-thumbnail .image-list1 .selected:hover {
     opacity: 1;
   }
   .main-content .desc-wrapper {

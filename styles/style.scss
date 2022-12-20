@@ -46,26 +46,38 @@ ul{
     z-index: 2;
 }
 
+
+//mobile menu styling
+@keyframes mobile-menu-animation{
+    to{
+        left:0;
+    }
+}
 .mobile-menu{
     display: none;
     background-color: $pale-orange;
     position: fixed;
     top:0;
-    left:0;
+    left:-300px;
     z-index: 3;
     height: 100vh;
     width: 60%;
     padding: 1.5rem;
+    animation: mobile-menu-animation 400ms ease forwards;
     img{
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
         &:hover{
             cursor: pointer;
             filter: invert(63%) sepia(56%) saturate(4587%) hue-rotate(348deg) brightness(106%) contrast(101%);
         }
     }
+    ul{
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem
+    };
     li{
         font-weight: 700;
-        margin: 1.5rem 0;
         color: $very-dark-blue;
         &:hover{
             cursor: pointer;
@@ -74,6 +86,13 @@ ul{
     }
 }
 
+
+//header styling
+@keyframes showCart {
+    to{
+        opacity: 1;
+    }
+}
 header{
     position: fixed;
     top:0;
@@ -106,7 +125,7 @@ header{
         
     }
     .account-menu{
-        flex-basis: 70px;
+        flex-basis: 80px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -128,7 +147,24 @@ header{
                 border-radius: 50%;
             }
         }
+        .quantity-alert{
+            position: absolute;
+            display: none;
+            top: 0;
+            left: 15px;
+            background-color: $orange;
+            color: $pale-orange;
+            width: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-align: center;
+            border-radius: 10px;
+        }
         
+    }
+    .cart-content-wrapper.active{
+        display: block;
+        animation: showCart 400ms ease forwards;
     }
     .cart-content-wrapper{
         display: none;
@@ -136,6 +172,7 @@ header{
         top: 4.8rem;
         left: 0;
         right: 0;
+        opacity: 0;
         background-color: $pale-orange;
         margin-inline: 0.5rem;
         padding: 1.3rem;
@@ -214,6 +251,13 @@ header{
     }
 }
 
+
+//main content styling
+@keyframes change-image{
+    to{
+        opacity: 1;
+    }
+}
 .main-content{
     margin: 0 auto;
     margin-top: 2rem;
@@ -234,29 +278,26 @@ header{
         .lightbox-thumbnail{
             width: 275px;
             position: relative;
-            // width: 40%;
-            // max-width: 400px;
-            // min-width: 275px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            
+
             .selected-image{
                 display: flex;
+                border-radius: 20px;
                 overflow: hidden;
                 .main-img{
                     width: 100%;
-                    border-radius: 20px;
+                    opacity: 0;
+                    animation: change-image 400ms ease forwards;
+                    transition: 500ms ease;
                     &:hover{
                         cursor: pointer;
                     }
                 }
-                .main-img.first{
-                    margin-left: 0;
-                }
             }
-            .image-list{
+            .image-list2{
                 display: flex;
                 max-width: 80%;
                 margin-top: 2rem;
@@ -276,7 +317,7 @@ header{
                     }
                 }
                 .selected{
-                    border: solid 3px $orange;
+                    outline: solid 3px $orange;
                     .thumbnail-img{
                         opacity: 0.5;
                     }
@@ -306,6 +347,7 @@ header{
                 position: absolute;
                 width: 2.5rem;
                 height: 2.5rem;
+                z-index: 3;
                 .button{
                     padding: 1rem;
                     &:hover{
@@ -325,9 +367,6 @@ header{
 
 
     .thumbnail-wrapper{
-        // .desktop-thumbnail{
-        //     display: none;
-        // }
         .main-thumbnail{
             position: relative;
             overflow: hidden;
@@ -364,21 +403,17 @@ header{
             }
             .main-img{
                 width: 100%;
+                transition: 500ms ease;
                 &:hover{
                     cursor: pointer;
                 }
             }
-            .main-img.first{
-                margin-left: 0;
-            }
-            .selected-image{
+            .selected-image-main{
                 display:flex;
-                //height: 300px;
-                //position: relative;
             }
         }
 
-        .image-list{
+        .image-list1{
             display: none;
         }
     }
@@ -476,12 +511,18 @@ header{
             width: 350px;
             z-index: 1;
         }
+        .account-menu{
+            flex-basis: 90px;
+        }
     }
 }
 
 @media only screen and (min-width: 600px) {
     header{
         padding: 2rem 1rem;
+        .cart-content-wrapper{
+            top: 6.8rem;
+        }
     }
     .main-content{
         max-width: 600px;
@@ -504,7 +545,7 @@ header{
         padding: 1rem;
         max-width: 1100px;
         margin: 0 auto;
-        position: static;
+        position: relative;
         .main-menu{
             flex-basis: 570px;
             display: flex;
@@ -534,7 +575,7 @@ header{
             }
         }
         .account-menu{
-            flex-basis: 88px;
+            flex-basis: 118px;
             .account{
                 width: 40px;
             }
@@ -565,22 +606,22 @@ header{
             
             .main-thumbnail{
                 display: block;
-                overflow: hidden;
                 .btn-wrapper{
                     display: none;
                 }
-                .selected-image{
+                .selected-image-main{
                     display: flex;
                     width: 100%;
+                    border-radius: 20px;
+                    overflow: hidden;
                     img{
                         width: 100%;
-                        border-radius: 20px;
                         &:hover{
                             cursor: pointer;
                         }
                     }
                 }
-                .image-list{
+                .image-list1{
                     display: flex;
                     justify-content: space-between;
                     margin: 2rem 0;
